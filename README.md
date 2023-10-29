@@ -32,9 +32,11 @@ In **Week 4**, you will learn how to build two integration scenarios as mentione
 
 Enjoy Learning!
 
-## Accounts and Subscriptions required for this course
+## Requirements 
 
-If you already have an enterprise account subscription for SAP BTP and AWS, you can use the same for all the exercises. This documentation focuses on allowing users to try out the exercises in trial accounts from SAP and AWS.
+### Accounts and Subscriptions required for this course
+
+If you already have an enterprise account subscription for SAP BTP and AWS, you can use the same for all the exercises. This documentation focuses on allowing users to try out the exercises in trial accounts from SAP and the free tier account model from AWS.
 
 ## Known Issues 
 
@@ -44,7 +46,7 @@ None so far.
 This repository includes exercises for getting started and building simple scenarios in SAP BTP and AWS platforms. For this reason, the coding should not be seen as any recommendation for productive implementation. 
 
 ## How to Obtain Support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
+[Create an issue](https://github.com/SAP-samples/btp-aws1-opensap/issues) in this repository if you find a bug or have questions about the content.
 For additional support, [ask a question in the SAP Community](https://answers.sap.com/questions/ask.html).
 
 ## Contributing
