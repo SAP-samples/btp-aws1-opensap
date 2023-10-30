@@ -1,3 +1,5 @@
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-aws1-opensap)](https://api.reuse.software/info/github.com/SAP-samples/btp-aws1-opensap)
+
 # Build Resilient Applications on SAP BTP with Amazon Web Services
 
 Welcome to this repository that contains all the documentation and step-by-step procedures for exercises that are part of the openSAP course **Build Resilient Applications on SAP BTP with Amazon Web Services**.
