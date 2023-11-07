@@ -5,52 +5,48 @@ This exercise is part of the openSAP course [Build Resilient Applications on SAP
 ## Section 1: Subscribe to SAP Build Process Automation
 The objective of this section is to subscribe to the SAP Build Process Automation. 
 
-<details>
+<!-- <details> -->
 
 1. Log on to your SAP BTP cockpit. Navigate to the **Instance and Subscriptions** page and subscribe to the **SAP Build Process Automation**.
 
     ![Alt text](./images/SBPA_1.png)
 
-2. Navigate to "Users". Open your user and assign the respective role collections as shown in the below screenshot.
+2. Navigate to "Users". Open your user which is created in the custom identity provider and assign the respective role collections as shown in the below screenshot.
 
+    ![Alt text](./images/SBPA_2_0.png)   
+     
     ![Alt text](./images/SBPA_2.png)
 
-</details>
+<!-- </details> -->
 
 ## Section 2: Create the Actions Project and Business Process/Workflow
 In this section, you will create an Actions Project to Read and Unblock the business partner. Then you will create the workflow/Business Process to unblock the business partner.
 
-<details>
+<!-- <details> -->
 
-1. Open SAP BTP Cockpit. Navigate to the **Instance and Subscriptions** page open the "SAP Build Process Automation" subscription and click "Go to Application".
+1. Open SAP BTP Cockpit. Navigate to the **Instance and Subscriptions** page open the "SAP Build Process Automation" subscription and click "Go to Application". Log in with the custom identity provider.
 
     ![Alt text](./images/SBPA_3.png)
 
-2. Click on "Create" to create a new Actions Project in the Build Lobby.
+2. Go to "Connectors" on the left side navigation pane and click "Actions". Click on "Create" to create a new Actions Project.
 
-3. Click the tile "Build an Automated Process".
+    ![Alt text](./images/SBPA_ACTION_1.png)
 
-    ![Alt text](./images/SBPA_4.png)
-
-4. Click the "Actions" tile.
-
-    ![Alt text](./images/SBPA_5.png)
-
-5. Click "Upload API Specification". Select the metadata file of the business partner.
+6. Click "Upload API Specification". Select the metadata file of the business partner.
 
     ![Alt text](./images/SBPA_6.png)
    
-    > Note: To download the metadata document, add /$metadata to the Business Partner OData service and save it to a local folder.
+    > Note: To download the metadata document, add /$metadata to the Business Partner OData service and save it to a local folder. Your service url should like this like     https://trialaccount-dev-mock-srv.cfapps.us10-001.hana.ondemand.com/odata/v4/op-api-business-partner-srv/$metadata
 
-6. Provide "Project Name" and "Description". Click "Create".
+    Choose Next to create an Action project.
+    ![Alt text](./images/actions.png)
 
-    ![Alt text](./images/SBPA_7.png)
 
 7. Select "Get" and "Patch" requests. You use "Get" to read the Business Partner and "Patch" to update the business partner with "Unblocked" status.
 
     ![Alt text](./images/SBPA_8.png)
 
-8. Click Read Business Partner and update the description. Click "Update".
+8. Select the **Get** details and Update the description. Click "Update".
 
     ![Alt text](./images/SBPA_10.png)
 
@@ -70,24 +66,42 @@ In this section, you will create an Actions Project to Read and Unblock the busi
 
     ![Alt text](./images/SBPA_14.png)
 
+
 13. Go back to the Build Lobby. Choose to **Create** to create the "Business Process".
 
+3. Click the tile "Build an Automated Process".
+
+    ![Alt text](./images/SBPA_4.png)
+
+4. Click the "Business Process" tile.
+
+    ![Alt text](./images/SBPA_5_1.png)
+
+5. Provide "Project Name" and "Description". Click "Create". This will launch the Build Process Automation in a new window. Choose Accept and proceed to create the process.
+
+    ![Alt text](./images/SBPA_7_1.png)
+
+6. Enter the Process (Workflow) Name and Description. Click "Create".
+
+    ![Alt text](./images/SBPA_17.png)
+
+7. Go to "Variables" and click "Configure" to define the workflow/process Inputs. Click on **Add Input**.
+
+    ![Alt text](./images/SBPA_18.png)
+    > Note: If you are not able to see this, click on the empty canvas.
+
+<!-- 
 14. Click the "Business Process" title.
 
     ![Alt text](./images/SBPA_15.png)
 
 15. Provide "Project Name" and "Description". Click "Create"
 
-    ![Alt text](./images/SBPA_16.png)
+    ![Alt text](./images/SBPA_16.png) -->
 
-16. Enter the Process (Workflow) Name and Description. Click "Create".
 
-    ![Alt text](./images/SBPA_17.png)
 
-17. Go to "Variables" and click "Configure" to define the workflow/process Inputs.
 
-    ![Alt text](./images/SBPA_18.png)
-    > Note: If you are not able to see this, click on the empty canvas.
 
 18. Enter the "BusinessPartner" and "SupportingDocument" inputs.
 
@@ -137,7 +151,7 @@ In this section, you will create an Actions Project to Read and Unblock the busi
 
     ![Alt text](./images/SBPA_32.png)
 
-33. Drag and Drop three "Texts" on the Approval form.
+33. Drag and Drop three "Texts" on the Approval form. Update the labels as Business Partner, First Name and Last Name.
 
     ![Alt text](./images/SBPA_33.png)
 
@@ -149,7 +163,7 @@ In this section, you will create an Actions Project to Read and Unblock the busi
 
     ![Alt text](./images/SBPA_35.png)
 
-36. Provide a "Link Text". Click "Save". Your form should look like below:
+36. For the "Link Text" field update the value as Supporting Document. Click "Save". Your form should look like below:
 
     ![Alt text](./images/SBPA_36.png)
 
@@ -193,17 +207,20 @@ In this section, you will create an Actions Project to Read and Unblock the busi
 
     ![Alt text](./images/SBPA_46.png)
 
-46. Before deploying, you need to configure the destination. Open SAP BTP Cockpit. Go to destinations open BUPA destination and click edit. Then add the additional property "sap.processautomation.enabled" with the value "true". Then click "Save".
+46. Before deploying, you need to configure the destination. Open SAP BTP Cockpit. Go to destinations open BUPA destination and click edit. Then add the additional property "sap.processautomation.enabled" manually with the value "true". Then click "Save".
 
     ![Alt text](./images/SBPA_24.png)
 
 
-46. Go back to the SAP Build "Settings" tab. Go to "Destinations" and choose "New Destination". Now you can choose the Business Partner destination and click "Add".
+46. Go back to the SAP Build "Control Tower" section. Go to "Destinations" and choose "New Destination". Now you can choose the Business Partner destination and click "Add".
 
-    ![Alt text](./images/SBPA_25.png) 
+    ![Alt text](./images/46_1.png) 
 
 
-47. Come back to the Business Partner Approval Process. Click "Deploy".
+47. Come back to the Business Partner Approval Process. Ensure you have released your application, then go ahead with Deploy. Click "Deploy".
+
+    ![Alt text](./images/SBPA_25_1.png)
+
 
     ![Alt text](./images/SBPA_47.png)
 
@@ -212,24 +229,24 @@ In this section, you will create an Actions Project to Read and Unblock the busi
 
     ![Alt text](./images/SBPA_48.png)
 
-49. Open the "Monitor" page and Open "Triggers".
+49. Open the "Monitoring" section and Open "Triggers".
 
-    ![Alt text](./images/SBPA_49.png)
+    ![Alt text](./images/SBPA_49_1.png)
 
 50. Click "View" to open the trigger.
 
     ![Alt text](./images/SBPA_50.png)
 
-51. Copy this information, which you will use to trigger from the SAP Build Application (Business Partner Onboarding app).
+51. Copy the URL and Input Schema details, which you will use to trigger from the SAP Build Application (Business Partner Onboarding app).
 
     ![Alt text](./images/SBPA_51.png)
 
-</details>
+<!-- </details> -->
 
 ## Section 3: Call the Workflow from Business Partner OnBoarding App
 You will now integrate this workflow into the Business Partner OnBoarding Application that you developed in the earlier unit.
 
-<details>
+<!-- <details> -->
 
 1. Create the destination for SAP Build Process Automation, which you will use to trigger the workflow from the SAP Build App (Business Partner Onboarding Application). Follow the steps in this tutorial - [Create Destination to Trigger Process from any Service](https://developers.sap.com/tutorials/spa-create-service-instance-destination.html). 
 
@@ -256,7 +273,7 @@ You will now integrate this workflow into the Business Partner OnBoarding Applic
 
     ![Alt text](./images/SBPA_58.png)
 
-6. Select the "create" action and click "Request headers".
+6. In the left navigation under **Base**, enable the toggle button for **create** action. Click on the create row to see the config, test and schema tabs. Click "Request headers".
 
     ![Alt text](./images/SBPA_59.png)
 
@@ -282,7 +299,7 @@ You will now integrate this workflow into the Business Partner OnBoarding Applic
 
     >**Formula**: ENCODE_JSON({"definitionId":query.record.definitionId, "context":query.record.context})
 
-12. Select the destination that you created in Step 1.
+12. Click on **Base** to go back to the main configuration. Select the destination that you created in Step 1 and click on **SAVE DATA ENTITY**.
 
     ![Alt text](./images/SBPA_66.png)
 
@@ -293,7 +310,7 @@ You will now integrate this workflow into the Business Partner OnBoarding Applic
 14. Drag and drop the "Create record" to the logic canvas and connect it at the end, after the Business Partner is created and the attachment is uploaded.
 
     ![Alt text](./images/SBPA_68.png)
-    ![Alt text](./images/SBPA_69.png)
+    ![Alt text](./images/workflowcall_logic.png)
 
 15. Click the newly added "Create record" and in the properties, click "Resource name".
 
@@ -317,9 +334,9 @@ You will now integrate this workflow into the Business Partner OnBoarding Applic
     ![Alt text](./images/SBPA_76.png)
 
 
-20. For **supportingdocument** field, click "Page variable" and select "uploadUri". click "SAVE".
-    ![Alt text](./images/SBPA_77.png)
-    ![Alt text](./images/SBPA_78.png)
+20. For **supportingdocument** field, click "Formulae" and enter this formulae `pageVars.uploadUrl+data.A_BusinessPartner1.BusinessPartner+".pdf"`.
+    ![Alt text](./images/supportingdoc_formu1.png)
+    ![Alt text](./images/supportingdoc_formu2.png)
 
 21. Go to the "LAUNCH" tab, open the preview portal, enter the data and click "Create".
     ![Alt text](./images/SBPA_79.png)
@@ -329,7 +346,7 @@ You will now integrate this workflow into the Business Partner OnBoarding Applic
     ![Alt text](./images/SBPA_81.png)
     ![Alt text](./images/SBPA_82.png)
 
-</details>
+<!-- </details> -->
 
 You have successfully created an approval process using SAP Build Process Automation. In the next unit, you will enhance this application and connect Amazon SNS API to SAP Build Process Automation.
 [Build a simple approval scenario in the SAP Build Process Automation](../Unit%202.5/README.md)
