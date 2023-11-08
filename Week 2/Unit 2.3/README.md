@@ -25,6 +25,7 @@ The objective of this section is to create an Amazon S3 bucket to store and retr
 4.	Enter your bucket name and select a region.
     Your bucket name needs to be unique. 
     Leave the rest of the settings with their default values.
+    Note down the bucket name and region.
 
     ![Alt text](./images/aws-3.png)
 
@@ -145,19 +146,22 @@ This section describes how to create an IAM Role and Policy that will enable our
 
 This section describes the steps required to create your API in Amazon API Gateway to store and retrieve documents from Amazon S3. 
 
+
+**Note:** Please use the old console until we update the documentation with the new console for Amazon API Gateway.
+
 <details>
 
 1.	Access Amazon API Gateway by searching for the service or this [link](https://console.aws.amazon.com/apigateway/main/apis)
 
     ![Alt text](./images/aws-19.png)
 
-2.	Select **REST API - Build**
+2.	 Click **Create API** and then select **REST API - Build**.
 
-    ![Alt text](./images/aws-20.png)
+     ![Alt text](./images/aws-20.png)
 
-3.	Select **New API**, enter your **API name** and leave **Endpoint Type = Regional**. Click **Create API**
+3.	Select **New API**, enter your **API name** and leave **Endpoint Type = Regional**.
 
-    ![Alt text](./images/aws-21.png)
+    ![Alt text](./images/aws-21_1.png)
 
 4.	Create Resource **{folder}**.  
     Ensure you enter **{folder}** for the **Resource Name** and **Resource Path** field.  
@@ -215,11 +219,9 @@ This section describes the steps required to create your API in Amazon API Gatew
 
     ![Alt text](./images/aws-32.png)
 
-12.	Go back by selecting Method Execution at the top and select **Create Method**, to define the **GET** method
+12.	Go back by selecting Method Execution at the top and select **Create Method**, to define the **GET** method under **/{item}**.
 
     ![Alt text](./images/aws-33.png)
-
-    ![Alt text](./images/image-4.png)
 
 13.	Use the same settings from the PUT method, except for the HTTP method (GET in this case)
 
@@ -235,7 +237,6 @@ This section describes the steps required to create your API in Amazon API Gatew
 
     ![Alt text](./images/aws-34.png)
 
-
 14.	Enter the URL Path Parameters (same parameters used for the PUT Method)
     ![Alt text](./images/aws-35.png)
 
@@ -246,13 +247,13 @@ This section describes the steps required to create your API in Amazon API Gatew
 
     From the actions menu, select **Enable CORS**
 
-    ![Alt text](./images/image-13.png)
+    ![Alt text](./images/cors-image-0.png)
 
 
     Ensure both PUT and GET methods are selected. Click on **Enable CORS and replace existing CORS headers**
-    ![Alt text](./images/image-1.png)
-    ![Alt text](./images/image-2.png)
-    ![Alt text](./images/image-3.png)
+    ![Alt text](./images/cors-image-1.png)
+    ![Alt text](./images/cors-image-2.png)
+    ![Alt text](./images/cors-image-3.png)
     
     Please note that when enabling CORS, the Method Response and Integration Responses will be updated and an entry for Access-Control-Allow-Origin added. No action is required but you will notice this as an additional value.
 
@@ -263,8 +264,8 @@ This section describes the steps required to create your API in Amazon API Gatew
 
     This will configure binary support for PDF files.
 
-    ![Alt text](./images/image-14.png)
-
+     ![Alt text](./images/aws-38.png)
+    
     Click on **Save Changes**. 
 
 19.	Enable security by requesting an API Key for the PUT method. Navigate back to the PUT Method by clicking on Resources and choose PUT
@@ -375,7 +376,7 @@ This section describes how to consume the Amazon S3 API in the SAP Build Apps ap
 
     ![Alt text](./images/build-07.png)
 
-8. Add another page variable with a name as **s3apikey** and **Variable value type** as **Text** and set the initial value as the value that you have noted from **Section 3: Step 29**.
+8. Add another page variable with a name as **s3apikey** and **Variable value type** as **Text** and set the initial value as the value that you have noted from **Section 3: Step 30**.
     
     ![Alt text](./images/build-08.png)
 
@@ -413,7 +414,7 @@ This section describes how to consume the Amazon S3 API in the SAP Build Apps ap
 
     ![Alt text](./images/buildapp-05.png)
 
-6. Install another component by name **Upload files** by following steps 3,4 and 5 above.
+6. Install another component by name **Upload files** by following steps 3,4 and 5 above. Select the one with the description "Upload file(s) to the given URL(s)".
 
     ![Alt text](./images/buildapp-06.png)
 
@@ -457,7 +458,7 @@ This section describes how to consume the Amazon S3 API in the SAP Build Apps ap
 
     ![Alt text](./images/buildapp-16.png)
 
-17. Enter the formula as **[ SET_KEY( pagevars.fileupload[0], "uploadUrl", pagevars.uploadUrl+data.A_BusinessPartner1.Businesspartner+".pdf") ]** and then choose to **Save** the binding.
+17. Enter the formula as **[SET_KEY(pageVars.fileUpload[0], "uploadUrl", pageVars.uploadUrl+ data.A_BusinessPartner1.BusinessPartner+".pdf")]** and then choose to **Save** the binding.
 
     ![Alt text](./images/buildapp-17.png)
 
