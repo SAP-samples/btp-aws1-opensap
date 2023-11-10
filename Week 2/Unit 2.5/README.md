@@ -9,7 +9,7 @@ You have created an AWS Free Tier account: [AWS Free Tier](https://aws.amazon.co
 ## Section 1: Create Amazon SNS Topic
 The objective of this section is to create an Amazon SNS Topic to be able to send and receive notifications. 
 
-<details>
+<!-- <details> -->
 
 1.	Log on to your [AWS Account](https://console.aws.amazon.com/)
 
@@ -37,13 +37,13 @@ The objective of this section is to create an Amazon SNS Topic to be able to sen
     
     ![Alt text](./images/aws-6.png)
 
-</details>
+<!-- </details> -->
 
 ## Section 2: Create IAM Role & Policy
 
 This section describes how to create an IAM Role and Policy that will enable our API to send notifications to the Amazon SNS Topic we recently created. 
 
-<details>
+<!-- <details> -->
 
 1.	Access the IAM Console by searching or using this [link](https://console.aws.amazon.com/iamv2)
 
@@ -140,13 +140,13 @@ Your role has now been created and it is ready to be utilized.
  
 Keep the **ARN handy** for the next section. 
 
-</details>
+<!-- </details> -->
 
 ## Section 3: Create API in Amazon API Gateway
 
 This section describes the steps required to create your API in Amazon API Gateway to send notifications to the Amazon SNS Topic you created earlier.
 
-<details>
+<!-- <details> -->
 
 1.	Access **Amazon API Gateway** by searching for the service or this [link](https://console.aws.amazon.com/apigateway/main/apis)
 
@@ -265,12 +265,12 @@ Keep this key handy to be utilized within **SAP** Build Apps**.
 
 You have now successfully created your API to store and retrieve files from Amazon S3. 
 
-</details>
+<!-- </details> -->
 
 ## Section 4: Connect SNS API to SAP Build Process Automation process
 This section describes the steps required to connect the SNS API to the SAP Build Process Automation workflow. First, the SNS API metadata is downloaded to a local folder, then a destination is created in the SAP BTP cockpit to connect with the SNS API, then an actions project is created to connect the SNS API with the SAP Build Process Automation project. In the end, this action is added to the workflow.
 
-<details>
+<!-- <details> -->
 
 1.	Open Amazon API Gateway. Open the SNS API, go to 'Stages' and click "JSON" to download the OpenAPI file. Save the Invoke URL, which will be used in the creation of the destination.
 
@@ -292,15 +292,15 @@ This section describes the steps required to connect the SNS API to the SAP Buil
     | URL.headers.x-api-key | API Key You store in the last section |  |  |  |  
     |  |  |  |  |  |  
 
-3.  Open the Destinations in SAP Build Settings. Click New Destination and select the destination that we created in the earlier step. Click Add to save.
+3.  Open the Destinations in SAP Build, Control Tower. Click New Destination and select the destination that we created in the earlier step. Click Add to save.
 
     ![Alt text](./images_btp/sbpa_4.png)
     ![Alt text](./images_btp/sbpa_5.png)
 
-4.  Open SAP Build Lobby. Click Create, select "Build an Automated Process" and select "Actions".
+4.  Open SAP Build Actions Page (In Connectors Side Panel). Click Create to create a new Actions Project to use the SNS API.
 
-    ![Alt text](./images_btp/sbpa_6.png)
-    ![Alt text](./images_btp/sbpa_7.png)
+    ![Alt text](./images_btp/SBPA_ACTION_1.png)
+    <!-- ![Alt text](./images_btp/sbpa_7.png) -->
 
 5.  Click "Upload API Specification" and select the OpenAPI document that you have downloaded in previous steps.
 
@@ -355,6 +355,8 @@ This section describes the steps required to connect the SNS API to the SAP Buil
     
     ![Alt text](./images_btp/sbpa_28.png)
 
-</details>
+<!-- </details> -->
 
 Now you have successfully integrated the Amazon SNS into SAP Build Process Automation using the SAP Build Action project. If you test the business partner onboarding application, you will get a notification after the business partner is unblocked.
+
+>**Note**: In this week exercises you have used the SAP S/4HANA mock service to integrate SAP Build. You can also try this with your SAP S/4HANA system where it is recommended to use [principal propogation](https://blogs.sap.com/2023/03/15/sap-build-apps-principal-propagation-with-s-4hana-cloud/).

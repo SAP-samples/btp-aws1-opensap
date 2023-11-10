@@ -237,9 +237,9 @@ In this section, you will create an Actions Project to Read and Unblock the busi
 
     ![Alt text](./images/SBPA_50.png)
 
-51. Copy the URL and Input Schema details, which you will use to trigger from the SAP Build Application (Business Partner Onboarding app).
+51. Copy the URL and definitionID from the Example tab as shown below. You will use this configure and trigger from the SAP Build Application (Business Partner Onboarding app).
 
-    ![Alt text](./images/SBPA_51.png)
+    ![Alt text](./images/SBPA_51_1.png)
 
 <!-- </details> -->
 
@@ -307,7 +307,7 @@ You will now integrate this workflow into the Business Partner OnBoarding Applic
 
     ![Alt text](./images/SBPA_67_1.jpg)
 
-14. Drag and drop the "Create record" to the logic canvas and connect it at the end, after the Business Partner is created and the attachment is uploaded.
+14. Drag and drop the "Create record" to the logic canvas and connect it at the end, after the Business Partner is created and the attachment is uploaded. Connect this to Dialog for Success and Failure as shown below.
 
     ![Alt text](./images/SBPA_68.png)
     ![Alt text](./images/workflowcall_logic.png)

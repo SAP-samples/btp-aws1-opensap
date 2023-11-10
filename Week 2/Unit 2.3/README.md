@@ -480,6 +480,8 @@ This section describes how to consume the Amazon S3 API in the SAP Build Apps ap
 
 <details>
 
+**Please Note:** Before testing, ensure your mock server is in the **Started** state.
+
 1. Choose the tab **Launch** at the top of App Builder.
 
     ![Alt text](./images/bptest-01.png)
@@ -508,7 +510,7 @@ This section describes how to consume the Amazon S3 API in the SAP Build Apps ap
 
     ![Alt text](./images/bptest-07.png)
 
-You can also log in to AWS console, navigate to the Amazon S3 bucket and verify that the pdf file with the name as business partner ID is created.
+You can also log in to the AWS console, navigate to the Amazon S3 bucket and verify that the pdf file with the name as business partner ID is created.
 
 </details>
 
