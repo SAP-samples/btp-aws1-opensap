@@ -1,0 +1,34 @@
+{
+  "xsappname": "business-partner-validation",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.BusinessPartnerViewer",
+      "description": "Business partner reader role"
+    },
+    {
+      "name": "$XSAPPNAME.BusinessPartnerValidator",
+      "description": "Business partner validator role"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "BusinessPartnerViewer",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.BusinessPartnerViewer"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "BusinessPartnerValidator",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.BusinessPartnerValidator"
+      ],
+      "attribute-references": []
+    }
+  ],
+  "attributes": []
+}

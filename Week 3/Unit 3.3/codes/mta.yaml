@@ -1,0 +1,192 @@
+_schema-version: "3.1"
+ID: business-partner-validation
+description: A simple CAP project.
+version: 1.0.0
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx cds build --production
+
+modules:
+# --------------------- SERVER MODULE -------------------------
+  - name: business-partner-validation-srv
+# -------------------------------------------------------------
+    type: nodejs
+    path: gen/srv
+    requires:
+      - name: business-partner-validation-db
+      - name: business-partner-validation-auth
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: ${default-url}
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+      ignore:
+        - .env
+        - node_modules/
+# -------------------- SIDECAR MODULE -------------------------
+  - name: business-partner-validation-db-deployer
+# -------------------------------------------------------------
+    type: hdb
+    path: gen/db
+    requires:
+      - name: business-partner-validation-db
+    parameters:
+      buildpack: nodejs_buildpack
+# ------------------ APPLICATION CONTENT ----------------------
+  - name: business-partner-validation-app-content
+# -------------------------------------------------------------
+    type: com.sap.application.content
+    path: .
+    requires:
+      - name: business-partner-validation-repo-host
+        parameters:
+          content-target: true
+    build-parameters:
+      build-result: resources
+      requires:
+        - artifacts:
+            - opensapawsweek3ui.zip
+          name: opensapawsweek3ui
+          target-path: resources/
+# ------------- APPLICATION: Business Partner Validation -----
+  - name: opensapawsweek3ui
+# ------------------------------------------------------------
+    type: html5
+    path: app/opensap-aws-week3-ui
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm install
+        - npm run build:cf
+      supported-platforms:
+        []
+# ------------------ App Router -------------------------------
+  - name: business-partner-validation-app-router
+# -------------------------------------------------------------
+    type: approuter.nodejs
+    path: app/ # from cds.env.folders. Consider also cds.env.build.target -> gen/app
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 1024M
+      memory: 1024M
+    build-parameters:
+      ignore:
+        - .env
+        - node_modules/
+        - default-env.json
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: business-partner-validation-auth
+# ------------------ DESTINATION CONTENT ----------------------
+  - name: business-partner-validation-destination-content
+# ------------------------------------------------------------
+    type: com.sap.application.content
+    requires:
+      - name: business-partner-validation-destination-service
+        parameters:
+          content-target: true
+      - name: business-partner-validation-repo-host
+        parameters:
+          service-key:
+            name: business-partner-validation-repo-host-key
+      - name: business-partner-validation-auth
+        parameters:
+          service-key:
+            name: uaa_business-partner-validation-key
+    parameters:
+      content:
+        instance:
+          destinations:
+            - Name: hana_app_business_partner_validation_repo_host
+              ServiceInstanceName: business-partner-validation-html5-srv
+              ServiceKeyName: business-partner-validation-repo-host-key
+              sap.cloud.service: hana.app
+            - Authentication: OAuth2UserTokenExchange
+              Name: hana_app_uaa_business_partner_validation
+              ServiceInstanceName: business-partner-validation-xsuaa-service
+              ServiceKeyName: uaa_business-partner-validation-key
+              sap.cloud.service: hana.app
+          existing_destinations_policy: ignore
+    build-parameters:
+      no-source: true
+      
+resources:
+# ------------------------------------------------------------
+  - name: business-partner-validation-db
+# ------------------------------------------------------------
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+# ------------------------------------------------------------
+  - name: business-partner-validation-repo-host
+# ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-name: business-partner-validation-html5-srv
+      service-plan: app-host
+# ------------------------------------------------------------
+  - name: business-partner-validation-destination-service
+# ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    requires:
+      - name: srv-api
+    parameters:
+      config:
+        HTML5Runtime_enabled: true
+        init_data:
+          instance:
+            destinations:
+              - Authentication: NoAuthentication
+                HTML5.DynamicDestination: true
+                HTML5.ForwardAuthToken: true
+                Name: business-partner-validation-srv
+                ProxyType: Internet
+                Type: HTTP
+                URL: ~{srv-api/srv-url}
+              - Authentication: NoAuthentication
+                Name: ui5
+                ProxyType: Internet
+                Type: HTTP
+                URL: https://ui5.sap.com
+            existing_destinations_policy: update
+        version: 1.0.0
+      service: destination
+      service-name: business-partner-validation-destination-service
+      service-plan: lite
+# ------------------------------------------------------------
+  - name: business-partner-validation-auth
+# ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path: ./xs-security.json
+      service: xsuaa
+      service-name: business-partner-validation-xsuaa-service
+      service-plan: application
+      config:
+        tenant-mode: dedicated
+        xsappname: business-partner-validation-${space}
+        role-collections:
+          - description: View Business Partner
+            name: BusinessPartnerViewer-${space}
+            role-template-references:
+              - $XSAPPNAME.BusinessPartnerViewer
+          - description: Validate Business Partner
+            name: BusinessPartnerValidator-${space}
+            role-template-references:
+              - $XSAPPNAME.BusinessPartnerValidator

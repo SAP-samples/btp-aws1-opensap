@@ -1,0 +1,63 @@
+{
+  "name": "business-partner-validation",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@aws-sdk/client-sns": "^3.427.0",
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/xssec": "^3",
+    "express": "^4",
+    "passport": "^0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/ux-specification": "^1.108.15",
+    "rimraf": "^3.0.2",
+    "sqlite3": "^5.1.6"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-opensap-aws-week3-ui": "cds watch --open opensap-aws-week3-ui/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy business-partner-validation --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": "db/businesspartnersrv.db"
+        }
+      },
+      "s4_mock_server": {
+        "kind": "odata",
+        "model": "srv/external/s4-mock-server",
+        "[sandbox]": {
+          "credentials": {
+            "url": "https://REPLACE-TO-YOUR-S4-MOCK-SERVER-SERVICE-DOMAIN-NAME/op-api-business-partner-srv"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "url": "https://REPLACE-TO-YOUR-S4-MOCK-SERVER-SERVICE-DOMAIN-NAME/op-api-business-partner-srv"
+          }
+        }
+      },
+      "[production]": {
+        "auth": "xsuaa",
+        "db": {
+          "kind": "hana"
+        }
+      }
+    }
+  },
+  "sapux": [
+    "app/opensap-aws-week3-ui"
+  ]
+}

@@ -1,0 +1,712 @@
+{
+ "meta": {
+  "creator": "cds-dk 7.0.2"
+ },
+ "$version": "2.0",
+ "definitions": {
+  "s4_mock_server": {
+   "kind": "service",
+   "@cds.external": true,
+   "@sap.message.scope.supported": "true",
+   "@sap.supported.formats": "atom json xlsx",
+   "@m.IsDefaultEntityContainer": "true"
+  },
+  "s4_mock_server.A_BusinessPartner": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.deletable": "false",
+   "@sap.label": "Business Partner",
+   "@sap.content.version": "1",
+   "elements": {
+    "BusinessPartner": {
+     "key": true,
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Business Partner",
+     "@sap.quickinfo": "Business Partner Number",
+     "notNull": true
+    },
+    "Customer": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Customer",
+     "@sap.quickinfo": "Customer Number",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "Supplier": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Supplier",
+     "@sap.quickinfo": "Account Number of Supplier",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "AcademicTitle": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Academic Title 1",
+     "@sap.quickinfo": "Academic Title: Key"
+    },
+    "AuthorizationGroup": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Authorization Group"
+    },
+    "BusinessPartnerCategory": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "BP Category",
+     "@sap.quickinfo": "Business Partner Category"
+    },
+    "BusinessPartnerFullName": {
+     "type": "cds.String",
+     "length": 81,
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "BusinessPartnerGrouping": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Grouping",
+     "@sap.quickinfo": "Business Partner Grouping"
+    },
+    "BusinessPartnerName": {
+     "type": "cds.String",
+     "length": 81,
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "BusinessPartnerUUID": {
+     "type": "cds.UUID",
+     "@sap.label": "BP GUID",
+     "@sap.quickinfo": "Business Partner GUID",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "CorrespondenceLanguage": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.label": "Correspondence lang.",
+     "@sap.quickinfo": "Business Partner: Correspondence Language"
+    },
+    "CreatedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Created by",
+     "@sap.quickinfo": "User who created the object",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "CreationDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Created On",
+     "@sap.quickinfo": "Date on which the object was created",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "CreationTime": {
+     "type": "cds.Time",
+     "@sap.label": "Created at",
+     "@sap.quickinfo": "Time at which the object was created",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "FirstName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "First Name",
+     "@sap.quickinfo": "First name of business partner (person)"
+    },
+    "FormOfAddress": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Title",
+     "@sap.quickinfo": "Form-of-Address Key"
+    },
+    "Industry": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Industry sector"
+    },
+    "InternationalLocationNumber1": {
+     "type": "cds.String",
+     "length": 7,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Int. location no. 1",
+     "@sap.quickinfo": "International location number (part 1)"
+    },
+    "InternationalLocationNumber2": {
+     "type": "cds.String",
+     "length": 5,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Int. location no. 2",
+     "@sap.quickinfo": "International location number (Part 2)"
+    },
+    "IsFemale": {
+     "type": "cds.Boolean",
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Female",
+     "@sap.quickinfo": "Selection: Business partner is female"
+    },
+    "IsMale": {
+     "type": "cds.Boolean",
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Male",
+     "@sap.quickinfo": "Selection: Business partner is male"
+    },
+    "IsNaturalPerson": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Natural Person",
+     "@sap.quickinfo": "Business Partner Is a Natural Person Under the Tax Laws"
+    },
+    "IsSexUnknown": {
+     "type": "cds.Boolean",
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Unknown",
+     "@sap.quickinfo": "Selection: Sex of business partner is not known"
+    },
+    "GenderCodeName": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Sex",
+     "@sap.quickinfo": "Sex of business partner (person)"
+    },
+    "Language": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.label": "Language",
+     "@sap.quickinfo": "Business partner: Language"
+    },
+    "LastChangeDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Changed on",
+     "@sap.quickinfo": "Date when object was last changed",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "LastChangeTime": {
+     "type": "cds.Time",
+     "@sap.label": "Changed at",
+     "@sap.quickinfo": "Time at which object was last changed",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "LastChangedByUser": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Changed by",
+     "@sap.quickinfo": "Last user to change object",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "LastName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Last Name",
+     "@sap.quickinfo": "Last name of business partner (person)"
+    },
+    "LegalForm": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Legal form",
+     "@sap.quickinfo": "BP: Legal form of organization"
+    },
+    "OrganizationBPName1": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Name 1",
+     "@sap.quickinfo": "Name 1 of organization"
+    },
+    "OrganizationBPName2": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Name 2",
+     "@sap.quickinfo": "Name 2 of organization"
+    },
+    "OrganizationBPName3": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Name 3",
+     "@sap.quickinfo": "Name 3 of organization"
+    },
+    "OrganizationBPName4": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Name 4",
+     "@sap.quickinfo": "Name 4 of organization"
+    },
+    "OrganizationFoundationDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Date founded",
+     "@sap.quickinfo": "Date organization founded"
+    },
+    "OrganizationLiquidationDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Liquidation date",
+     "@sap.quickinfo": "Liquidation date of organization"
+    },
+    "SearchTerm1": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Search Term 1",
+     "@sap.quickinfo": "Search Term 1 for Business Partner"
+    },
+    "SearchTerm2": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Search Term 2",
+     "@sap.quickinfo": "Search Term 2 for Business Partner"
+    },
+    "AdditionalLastName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Other Last Name",
+     "@sap.quickinfo": "Other Last Name of a Person"
+    },
+    "BirthDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Date of Birth",
+     "@sap.quickinfo": "Date of Birth of Business Partner"
+    },
+    "BusinessPartnerBirthDateStatus": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Birth Date Status",
+     "@sap.quickinfo": "Date of Birth: Status"
+    },
+    "BusinessPartnerBirthplaceName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Birthplace",
+     "@sap.quickinfo": "Birthplace of business partner"
+    },
+    "BusinessPartnerDeathDate": {
+     "type": "cds.Date",
+     "@sap.display.format": "Date",
+     "@sap.label": "Death date",
+     "@sap.quickinfo": "Date of death of business partner"
+    },
+    "BusinessPartnerIsBlocked": {
+     "type": "cds.Boolean",
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Central Block",
+     "@sap.quickinfo": "Central Block for Business Partner"
+    },
+    "BusinessPartnerType": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "BP Type",
+     "@sap.quickinfo": "Business Partner Type"
+    },
+    "ETag": {
+     "type": "cds.String",
+     "length": 26,
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "GroupBusinessPartnerName1": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Name 1",
+     "@sap.quickinfo": "Name 1 (group)"
+    },
+    "GroupBusinessPartnerName2": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Name 2",
+     "@sap.quickinfo": "Name 2 (group)"
+    },
+    "IndependentAddressID": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Address Number",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "InternationalLocationNumber3": {
+     "type": "cds.String",
+     "length": 1,
+     "@sap.display.format": "NonNegative",
+     "@sap.label": "Check digit",
+     "@sap.quickinfo": "Check digit for the international location number"
+    },
+    "MiddleName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Middle Name",
+     "@sap.quickinfo": "Middle name or second forename of a person"
+    },
+    "NameCountry": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Ctry/Reg. for Format",
+     "@sap.quickinfo": "Country/Region for Name Format Rule"
+    },
+    "NameFormat": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Name Format",
+     "@sap.quickinfo": "Name format"
+    },
+    "PersonFullName": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "Full Name"
+    },
+    "PersonNumber": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Person Number",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "IsMarkedForArchiving": {
+     "type": "cds.Boolean",
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Archiving Flag",
+     "@sap.quickinfo": "Central Archiving Flag"
+    },
+    "BusinessPartnerIDByExtSystem": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "External BP Number",
+     "@sap.quickinfo": "Business Partner Number in External System"
+    },
+    "TradingPartner": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Trading Partner No.",
+     "@sap.quickinfo": "Company ID of Trading Partner"
+    },
+    "to_BusinessPartnerAddress": {
+     "@cds.ambiguous": "missing on condition?",
+     "type": "cds.Composition",
+     "target": "s4_mock_server.A_BusinessPartnerAddress",
+     "cardinality": {
+      "max": "*"
+     }
+    }
+   }
+  },
+  "s4_mock_server.A_BusinessPartnerAddress": {
+   "kind": "entity",
+   "@cds.external": true,
+   "@cds.persistence.skip": true,
+   "@sap.label": "Address",
+   "@sap.content.version": "1",
+   "elements": {
+    "BusinessPartner": {
+     "key": true,
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Business Partner",
+     "@sap.quickinfo": "Business Partner Number",
+     "notNull": true
+    },
+    "AddressID": {
+     "key": true,
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Address Number",
+     "notNull": true
+    },
+    "ValidityStartDate": {
+     "type": "cds.DateTime",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@sap.label": "Valid From",
+     "@sap.quickinfo": "Validity Start of a Business Partner Address"
+    },
+    "ValidityEndDate": {
+     "type": "cds.DateTime",
+     "@odata.Type": "Edm.DateTimeOffset",
+     "@sap.label": "Valid To",
+     "@sap.quickinfo": "Validity End of a Business Partner Address"
+    },
+    "AuthorizationGroup": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Authorization Group"
+    },
+    "AddressUUID": {
+     "type": "cds.UUID",
+     "@sap.label": "GUID of a Business Partner Address",
+     "@sap.heading": "",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "AdditionalStreetPrefixName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Street 3"
+    },
+    "AdditionalStreetSuffixName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Street 5"
+    },
+    "AddressTimeZone": {
+     "type": "cds.String",
+     "length": 6,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Time zone",
+     "@sap.quickinfo": "Address time zone"
+    },
+    "CareOfName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "c/o",
+     "@sap.quickinfo": "c/o name"
+    },
+    "CityCode": {
+     "type": "cds.String",
+     "length": 12,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "City Code",
+     "@sap.quickinfo": "City code for city/street file"
+    },
+    "CityName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "City"
+    },
+    "CompanyPostalCode": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Company Postal Code",
+     "@sap.quickinfo": "Company Postal Code (for Large Customers)"
+    },
+    "Country": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Country/Region Key"
+    },
+    "County": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "County"
+    },
+    "DeliveryServiceNumber": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Delivery Service No.",
+     "@sap.quickinfo": "Number of Delivery Service"
+    },
+    "DeliveryServiceTypeCode": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Delvry Serv Type",
+     "@sap.quickinfo": "Type of Delivery Service"
+    },
+    "District": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "District"
+    },
+    "FormOfAddress": {
+     "type": "cds.String",
+     "length": 4,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Title",
+     "@sap.quickinfo": "Form-of-Address Key",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "FullName": {
+     "type": "cds.String",
+     "length": 80,
+     "@sap.label": "Full Name",
+     "@sap.quickinfo": "Full name of a party (Bus. Partner, Org. Unit, Doc. address)",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "HomeCityName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Different City",
+     "@sap.quickinfo": "City (different from postal city)"
+    },
+    "HouseNumber": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "House Number"
+    },
+    "HouseNumberSupplementText": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.label": "Supplement",
+     "@sap.quickinfo": "House number supplement"
+    },
+    "Language": {
+     "type": "cds.String",
+     "length": 2,
+     "@sap.label": "Language Key"
+    },
+    "POBox": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "PO Box"
+    },
+    "POBoxDeviatingCityName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "PO Box City",
+     "@sap.quickinfo": "PO Box city"
+    },
+    "POBoxDeviatingCountry": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "PO Box Ctry/Region",
+     "@sap.quickinfo": "PO Box of Country/Region"
+    },
+    "POBoxDeviatingRegion": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "PO Box Region",
+     "@sap.quickinfo": "Region for PO Box (Country, State, Province, ...)"
+    },
+    "POBoxIsWithoutNumber": {
+     "type": "cds.Boolean",
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "PO Box w/o No.",
+     "@sap.quickinfo": "Flag: PO Box Without Number"
+    },
+    "POBoxLobbyName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "PO Box Lobby"
+    },
+    "POBoxPostalCode": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "PO Box Postal Code"
+    },
+    "Person": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Person Number",
+     "@sap.creatable": "false",
+     "@sap.updatable": "false"
+    },
+    "PostalCode": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Postal Code",
+     "@sap.quickinfo": "City postal code"
+    },
+    "PrfrdCommMediumType": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Comm. Method",
+     "@sap.quickinfo": "Communication Method (Key) (Business Address Services)"
+    },
+    "Region": {
+     "type": "cds.String",
+     "length": 3,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Region",
+     "@sap.quickinfo": "Region (State, Province, County)"
+    },
+    "StreetName": {
+     "type": "cds.String",
+     "length": 60,
+     "@sap.label": "Street"
+    },
+    "StreetPrefixName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Street 2"
+    },
+    "StreetSuffixName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Street 4"
+    },
+    "TaxJurisdiction": {
+     "type": "cds.String",
+     "length": 15,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Tax Jurisdiction"
+    },
+    "TransportZone": {
+     "type": "cds.String",
+     "length": 10,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Transportation Zone",
+     "@sap.quickinfo": "Transportation zone to or from which the goods are delivered"
+    },
+    "AddressIDByExternalSystem": {
+     "type": "cds.String",
+     "length": 20,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "External Address No.",
+     "@sap.quickinfo": "Address number in external system"
+    },
+    "CountyCode": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "County code",
+     "@sap.quickinfo": "County code for county"
+    },
+    "TownshipCode": {
+     "type": "cds.String",
+     "length": 8,
+     "@sap.display.format": "UpperCase",
+     "@sap.label": "Township code",
+     "@sap.quickinfo": "Township code for Township"
+    },
+    "TownshipName": {
+     "type": "cds.String",
+     "length": 40,
+     "@sap.label": "Township"
+    }
+   }
+  }
+ }
+}

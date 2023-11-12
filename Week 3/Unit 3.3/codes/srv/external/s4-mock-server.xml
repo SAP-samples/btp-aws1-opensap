@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+  <edmx:DataServices m:DataServiceVersion="2.0">
+    <Schema Namespace="OP_API_BUSINESS_PARTNER_SRV" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <EntityContainer Name="EntityContainer" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="A_BusinessPartner" EntityType="OP_API_BUSINESS_PARTNER_SRV.A_BusinessPartner" sap:deletable="false" sap:label="Business Partner"/>
+        <EntitySet Name="A_BusinessPartnerAddress" EntityType="OP_API_BUSINESS_PARTNER_SRV.A_BusinessPartnerAddress" sap:label="Address"/>
+        <AssociationSet Name="A_BusinessPartner_to_BusinessPartnerAddress" Association="OP_API_BUSINESS_PARTNER_SRV.A_BusinessPartner_to_BusinessPartnerAddress">
+          <End Role="A_BusinessPartner" EntitySet="A_BusinessPartner"/>
+          <End Role="A_BusinessPartnerAddress" EntitySet="A_BusinessPartnerAddress"/>
+        </AssociationSet>
+      </EntityContainer>
+      <EntityType Name="A_BusinessPartner" sap:content-version="1" sap:label="Business Partner">
+        <Key>
+          <PropertyRef Name="BusinessPartner"/>
+        </Key>
+        <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+        <Property Name="Customer" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="Supplier" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="AcademicTitle" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Academic Title 1" sap:quickinfo="Academic Title: Key"/>
+        <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
+        <Property Name="BusinessPartnerCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="BP Category" sap:quickinfo="Business Partner Category"/>
+        <Property Name="BusinessPartnerFullName" Type="Edm.String" MaxLength="81" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="BusinessPartnerGrouping" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Grouping" sap:quickinfo="Business Partner Grouping"/>
+        <Property Name="BusinessPartnerName" Type="Edm.String" MaxLength="81" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="BusinessPartnerUUID" Type="Edm.Guid" sap:label="BP GUID" sap:quickinfo="Business Partner GUID" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="CorrespondenceLanguage" Type="Edm.String" MaxLength="2" sap:label="Correspondence lang." sap:quickinfo="Business Partner: Correspondence Language"/>
+        <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="User who created the object" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="CreationDate" Type="Edm.DateTime" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Date on which the object was created" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="CreationTime" Type="Edm.Time" sap:label="Created at" sap:quickinfo="Time at which the object was created" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="First name of business partner (person)"/>
+        <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Title" sap:quickinfo="Form-of-Address Key"/>
+        <Property Name="Industry" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Industry sector"/>
+        <Property Name="InternationalLocationNumber1" Type="Edm.String" MaxLength="7" sap:display-format="NonNegative" sap:label="Int. location no. 1" sap:quickinfo="International location number (part 1)"/>
+        <Property Name="InternationalLocationNumber2" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Int. location no. 2" sap:quickinfo="International location number (Part 2)"/>
+        <Property Name="IsFemale" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Female" sap:quickinfo="Selection: Business partner is female"/>
+        <Property Name="IsMale" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Male" sap:quickinfo="Selection: Business partner is male"/>
+        <Property Name="IsNaturalPerson" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Natural Person" sap:quickinfo="Business Partner Is a Natural Person Under the Tax Laws"/>
+        <Property Name="IsSexUnknown" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Unknown" sap:quickinfo="Selection: Sex of business partner is not known"/>
+        <Property Name="GenderCodeName" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Sex" sap:quickinfo="Sex of business partner (person)"/>
+        <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language" sap:quickinfo="Business partner: Language"/>
+        <Property Name="LastChangeDate" Type="Edm.DateTime" sap:display-format="Date" sap:label="Changed on" sap:quickinfo="Date when object was last changed" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="LastChangeTime" Type="Edm.Time" sap:label="Changed at" sap:quickinfo="Time at which object was last changed" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:quickinfo="Last user to change object" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Last name of business partner (person)"/>
+        <Property Name="LegalForm" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Legal form" sap:quickinfo="BP: Legal form of organization"/>
+        <Property Name="OrganizationBPName1" Type="Edm.String" MaxLength="40" sap:label="Name 1" sap:quickinfo="Name 1 of organization"/>
+        <Property Name="OrganizationBPName2" Type="Edm.String" MaxLength="40" sap:label="Name 2" sap:quickinfo="Name 2 of organization"/>
+        <Property Name="OrganizationBPName3" Type="Edm.String" MaxLength="40" sap:label="Name 3" sap:quickinfo="Name 3 of organization"/>
+        <Property Name="OrganizationBPName4" Type="Edm.String" MaxLength="40" sap:label="Name 4" sap:quickinfo="Name 4 of organization"/>
+        <Property Name="OrganizationFoundationDate" Type="Edm.DateTime" sap:display-format="Date" sap:label="Date founded" sap:quickinfo="Date organization founded"/>
+        <Property Name="OrganizationLiquidationDate" Type="Edm.DateTime" sap:display-format="Date" sap:label="Liquidation date" sap:quickinfo="Liquidation date of organization"/>
+        <Property Name="SearchTerm1" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Search Term 1" sap:quickinfo="Search Term 1 for Business Partner"/>
+        <Property Name="SearchTerm2" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Search Term 2" sap:quickinfo="Search Term 2 for Business Partner"/>
+        <Property Name="AdditionalLastName" Type="Edm.String" MaxLength="40" sap:label="Other Last Name" sap:quickinfo="Other Last Name of a Person"/>
+        <Property Name="BirthDate" Type="Edm.DateTime" sap:display-format="Date" sap:label="Date of Birth" sap:quickinfo="Date of Birth of Business Partner"/>
+        <Property Name="BusinessPartnerBirthDateStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Birth Date Status" sap:quickinfo="Date of Birth: Status"/>
+        <Property Name="BusinessPartnerBirthplaceName" Type="Edm.String" MaxLength="40" sap:label="Birthplace" sap:quickinfo="Birthplace of business partner"/>
+        <Property Name="BusinessPartnerDeathDate" Type="Edm.DateTime" sap:display-format="Date" sap:label="Death date" sap:quickinfo="Date of death of business partner"/>
+        <Property Name="BusinessPartnerIsBlocked" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Central Block" sap:quickinfo="Central Block for Business Partner"/>
+        <Property Name="BusinessPartnerType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="BP Type" sap:quickinfo="Business Partner Type"/>
+        <Property Name="ETag" Type="Edm.String" MaxLength="26" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="GroupBusinessPartnerName1" Type="Edm.String" MaxLength="40" sap:label="Name 1" sap:quickinfo="Name 1 (group)"/>
+        <Property Name="GroupBusinessPartnerName2" Type="Edm.String" MaxLength="40" sap:label="Name 2" sap:quickinfo="Name 2 (group)"/>
+        <Property Name="IndependentAddressID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Address Number" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="InternationalLocationNumber3" Type="Edm.String" MaxLength="1" sap:display-format="NonNegative" sap:label="Check digit" sap:quickinfo="Check digit for the international location number"/>
+        <Property Name="MiddleName" Type="Edm.String" MaxLength="40" sap:label="Middle Name" sap:quickinfo="Middle name or second forename of a person"/>
+        <Property Name="NameCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Ctry/Reg. for Format" sap:quickinfo="Country/Region for Name Format Rule"/>
+        <Property Name="NameFormat" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Name Format" sap:quickinfo="Name format"/>
+        <Property Name="PersonFullName" Type="Edm.String" MaxLength="80" sap:label="Full Name"/>
+        <Property Name="PersonNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Person Number" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="IsMarkedForArchiving" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Archiving Flag" sap:quickinfo="Central Archiving Flag"/>
+        <Property Name="BusinessPartnerIDByExtSystem" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="External BP Number" sap:quickinfo="Business Partner Number in External System"/>
+        <Property Name="TradingPartner" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Trading Partner No." sap:quickinfo="Company ID of Trading Partner"/>
+        <NavigationProperty Name="to_BusinessPartnerAddress" Relationship="OP_API_BUSINESS_PARTNER_SRV.A_BusinessPartner_to_BusinessPartnerAddress" FromRole="A_BusinessPartner" ToRole="A_BusinessPartnerAddress"/>
+      </EntityType>
+      <EntityType Name="A_BusinessPartnerAddress" sap:content-version="1" sap:label="Address">
+        <Key>
+          <PropertyRef Name="BusinessPartner"/>
+          <PropertyRef Name="AddressID"/>
+        </Key>
+        <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" Nullable="false" sap:display-format="UpperCase" sap:label="Business Partner" sap:quickinfo="Business Partner Number"/>
+        <Property Name="AddressID" Type="Edm.String" MaxLength="10" Nullable="false" sap:display-format="UpperCase" sap:label="Address Number"/>
+        <Property Name="ValidityStartDate" Type="Edm.DateTimeOffset" sap:label="Valid From" sap:quickinfo="Validity Start of a Business Partner Address"/>
+        <Property Name="ValidityEndDate" Type="Edm.DateTimeOffset" sap:label="Valid To" sap:quickinfo="Validity End of a Business Partner Address"/>
+        <Property Name="AuthorizationGroup" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Authorization Group"/>
+        <Property Name="AddressUUID" Type="Edm.Guid" sap:label="GUID of a Business Partner Address" sap:heading="" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="AdditionalStreetPrefixName" Type="Edm.String" MaxLength="40" sap:label="Street 3"/>
+        <Property Name="AdditionalStreetSuffixName" Type="Edm.String" MaxLength="40" sap:label="Street 5"/>
+        <Property Name="AddressTimeZone" Type="Edm.String" MaxLength="6" sap:display-format="UpperCase" sap:label="Time zone" sap:quickinfo="Address time zone"/>
+        <Property Name="CareOfName" Type="Edm.String" MaxLength="40" sap:label="c/o" sap:quickinfo="c/o name"/>
+        <Property Name="CityCode" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="City Code" sap:quickinfo="City code for city/street file"/>
+        <Property Name="CityName" Type="Edm.String" MaxLength="40" sap:label="City"/>
+        <Property Name="CompanyPostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Company Postal Code" sap:quickinfo="Company Postal Code (for Large Customers)"/>
+        <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+        <Property Name="County" Type="Edm.String" MaxLength="40" sap:label="County"/>
+        <Property Name="DeliveryServiceNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Delivery Service No." sap:quickinfo="Number of Delivery Service"/>
+        <Property Name="DeliveryServiceTypeCode" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Delvry Serv Type" sap:quickinfo="Type of Delivery Service"/>
+        <Property Name="District" Type="Edm.String" MaxLength="40" sap:label="District"/>
+        <Property Name="FormOfAddress" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Title" sap:quickinfo="Form-of-Address Key" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="FullName" Type="Edm.String" MaxLength="80" sap:label="Full Name" sap:quickinfo="Full name of a party (Bus. Partner, Org. Unit, Doc. address)" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="HomeCityName" Type="Edm.String" MaxLength="40" sap:label="Different City" sap:quickinfo="City (different from postal city)"/>
+        <Property Name="HouseNumber" Type="Edm.String" MaxLength="10" sap:label="House Number"/>
+        <Property Name="HouseNumberSupplementText" Type="Edm.String" MaxLength="10" sap:label="Supplement" sap:quickinfo="House number supplement"/>
+        <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Language Key"/>
+        <Property Name="POBox" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="PO Box"/>
+        <Property Name="POBoxDeviatingCityName" Type="Edm.String" MaxLength="40" sap:label="PO Box City" sap:quickinfo="PO Box city"/>
+        <Property Name="POBoxDeviatingCountry" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="PO Box Ctry/Region" sap:quickinfo="PO Box of Country/Region"/>
+        <Property Name="POBoxDeviatingRegion" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="PO Box Region" sap:quickinfo="Region for PO Box (Country, State, Province, ...)"/>
+        <Property Name="POBoxIsWithoutNumber" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="PO Box w/o No." sap:quickinfo="Flag: PO Box Without Number"/>
+        <Property Name="POBoxLobbyName" Type="Edm.String" MaxLength="40" sap:label="PO Box Lobby"/>
+        <Property Name="POBoxPostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="PO Box Postal Code"/>
+        <Property Name="Person" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Person Number" sap:creatable="false" sap:updatable="false"/>
+        <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code" sap:quickinfo="City postal code"/>
+        <Property Name="PrfrdCommMediumType" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Comm. Method" sap:quickinfo="Communication Method (Key) (Business Address Services)"/>
+        <Property Name="Region" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/>
+        <Property Name="StreetName" Type="Edm.String" MaxLength="60" sap:label="Street"/>
+        <Property Name="StreetPrefixName" Type="Edm.String" MaxLength="40" sap:label="Street 2"/>
+        <Property Name="StreetSuffixName" Type="Edm.String" MaxLength="40" sap:label="Street 4"/>
+        <Property Name="TaxJurisdiction" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/>
+        <Property Name="TransportZone" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Transportation Zone" sap:quickinfo="Transportation zone to or from which the goods are delivered"/>
+        <Property Name="AddressIDByExternalSystem" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="External Address No." sap:quickinfo="Address number in external system"/>
+        <Property Name="CountyCode" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="County code" sap:quickinfo="County code for county"/>
+        <Property Name="TownshipCode" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Township code" sap:quickinfo="Township code for Township"/>
+        <Property Name="TownshipName" Type="Edm.String" MaxLength="40" sap:label="Township"/>
+      </EntityType>
+      <Association Name="A_BusinessPartner_to_BusinessPartnerAddress">
+        <End Role="A_BusinessPartner" Type="OP_API_BUSINESS_PARTNER_SRV.A_BusinessPartner" Multiplicity="1">
+          <OnDelete Action="Cascade"/>
+        </End>
+        <End Role="A_BusinessPartnerAddress" Type="OP_API_BUSINESS_PARTNER_SRV.A_BusinessPartnerAddress" Multiplicity="*"/>
+      </Association>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

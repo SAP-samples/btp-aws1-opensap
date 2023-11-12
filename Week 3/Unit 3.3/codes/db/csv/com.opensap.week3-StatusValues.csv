@@ -1,0 +1,6 @@
+code;value;criticality;updateCode
+N;NEW;3;false
+P;IN PROCESS;2;false
+INV;INVALID;1;false
+V;VERIFIED;4;true
+C;COMPLETED;5;true

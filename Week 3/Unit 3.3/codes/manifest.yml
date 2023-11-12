@@ -1,0 +1,15 @@
+# Generated manifest.yml based on template version 0.1.0
+# appName = business-partner-validation
+# language=nodejs
+# multitenancy=false
+---
+applications:
+# -----------------------------------------------------------------------------------
+# Backend Service
+# -----------------------------------------------------------------------------------
+- name: business-partner-validation-srv
+  random-route: true  # for development only
+  path: gen/srv
+  memory: 256M
+  buildpack: nodejs_buildpack
+

@@ -1,0 +1,25 @@
+{
+    "[sandbox]": {
+        "auth": {
+            "passport": {
+                "strategy": "mock",
+                "users": {
+                    "bp.viewer@tester.sap.com": {
+                        "password": "initial",
+                        "ID": "bp.viewer@tester.sap.com",
+                        "roles": [
+                            "BusinessPartnerViewer"
+                        ]
+                    },
+                    "bp.validator@tester.sap.com": {
+                        "password": "initial",
+                        "ID": "bp.viewer@tester.sap.com",
+                        "roles": [
+                            "BusinessPartnerValidator"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}
