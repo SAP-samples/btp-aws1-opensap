@@ -7,8 +7,6 @@ In the exercise of this unit, we will introduce how to integrate the Amazon Simp
  - Understand how to protect your Amazon SNS Topic with the Amazon IAM Access Policy.
  - Understand how to consume the Amazon SNS Topic programmatically within the SAP CAP project by using the AWS SDK for SNS.
 
-**You can find the complete sample code of this exercise [here](../sample-code)**.
-
 ## Section 1. Setup Amazon Simple Notification Service (SNS)
 
 <details>
