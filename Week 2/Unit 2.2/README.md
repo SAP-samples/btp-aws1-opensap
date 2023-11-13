@@ -257,7 +257,7 @@ You have successfully created the Business Partner Onboarding application.
 5. It opens the application preview.
 ![Alt text](./images/bptest-05.png)
 
-6. Enter the **Business Partner ID**, **First Name** and **Last Name** and then click on **Create**.
+6. Enter the **Business Partner ID** (String with maximum 10 characters since it is defined in mock server with this restriction), **First Name** and **Last Name** and then click on **Create**.
 ![Alt text](./images/bptest-06.png)
 
 7. If the business partner is created, it displays the **Business Partner created successfully** message in the popup.
