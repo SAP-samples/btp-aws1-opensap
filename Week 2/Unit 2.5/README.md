@@ -26,8 +26,8 @@ The objective of this section is to create an Amazon SNS Topic to be able to sen
     ![Alt text](./images/aws-3.png)
 
 5.	Scroll to the end and select **Create topic**. Leave all other settings with their default values.
-    !
-    [Alt text](./images/aws-4.png)
+    
+    ![Alt text](./images/aws-4.png)
 
 6.	**Create subscription** to receive notifications in your inbox. Also, take note of the ARN for your topic, you will need it to create the API and IAM Role
     
@@ -241,7 +241,7 @@ This section describes the steps required to create your API in Amazon API Gatew
 
     ![Alt text](./images/aws-40.png)
 
-19.	Associate the Usage Plan with the Stage you just deployed.
+19.	Click **Add API Stage** to associate the Usage Plan with the Stage you just deployed and choose **Next**.
 
     ![Alt text](./images/aws-41.png)
 
@@ -332,7 +332,7 @@ This section describes the steps required to connect the SNS API to the SAP Buil
 
     ![Alt text](./images_btp/sbpa_17.png)
 
-11. Open the Business Partner Approval Process that you have created in the previous Unit and click the "+" icon after the "Ublock Business Partner" action. Select "Browse Library" and add the SNS action action.
+11. Navigate to the lobby to open the Business Partner Approval Process that you have created in the previous Unit and click the "+" icon after the "Ublock Business Partner" action. Select "Browse Library" and add the SNS action action.
 
     ![Alt text](./images_btp/sbpa_18.png)
 
@@ -343,6 +343,8 @@ This section describes the steps required to connect the SNS API to the SAP Buil
 12. In the General section, create a Destination Variable and select it.
 
     ![Alt text](./images_btp/sbpa_21.png)
+    
+    ![Alt text](./images_btp/sbpa_21_1.png)
 
 13. Select the "BusinessPartner" as the notification message.
 
