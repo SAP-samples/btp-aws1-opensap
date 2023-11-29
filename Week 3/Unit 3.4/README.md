@@ -202,6 +202,7 @@ async function sendEmailNotification(bpID){
     const AWS_ACCESS_KEY_ID = aws.iam.accessKey;
     const AWS_SECRET_ACCESS_KEY = aws.iam.secretAccessKey;
     const businessPartnerID = bpID;
+    const launchpadURL = launchpad.url + `&/BusinessPartner(BusinessPartner='${bpID}',IsActiveEntity=true)`;
 
     const snsClient = new SNSClient({
         region: REGION,
@@ -213,7 +214,7 @@ async function sendEmailNotification(bpID){
 
     let message = `Business Partner ${businessPartnerID} Records Has Been Changed, Please Review and Perform the Validation ASAP. \n`;
     message += `Please use below link to go the site.\n`;
-    message += launchpad.url;
+    message += launchpadURL;
     
     let params = {
 
