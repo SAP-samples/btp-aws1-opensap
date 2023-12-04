@@ -147,13 +147,13 @@ service BusinessPartnerService {
     entity BusinessPartnerAddress as projection on db.A_BusinessPartnerAddress;
 }
 ```
-![Alt text](./images/cap-dev-12.JPG)
+![Alt text](./images/cap-dev-12.png)
 
 **2.4** Let's do a quick test to see if we can start our CAP project locally and check the endpoint of the BusinessPartnerService as defined. 
 
 Click **Ctrl + Shift + `** at the same time to open a new Terminal in your Business Application Studio IDE. You should see a bash terminal will be opened for you in the bottom area.
 
-![Alt text](./images/cap-dev-13.JPG)
+![Alt text](./images/cap-dev-13.png)
 
 Issue the command **npm install --save** to install all required NPM packages required by the SAP CAP framework.
 
@@ -183,7 +183,7 @@ Let's click on the **/business-partner/** and **$metadata** to see if we could m
 
 Issue the command **npm i sqlite3 -D** in your terminal, this will add the NPM package for SQLite DB usage for the CAP project.
 
-![Alt text](./images/cap-dev-21.JPG)
+![Alt text](./images/cap-dev-21.png)
 
 Right-click on the **db** folder to create a new folder with the name **csv**, then right-click on the **csv** folder and **create a new CSV file** with the name **com.opensap.week3-StatusValues.csv**. Then copy and paste the below sample data of Domain Model StatusValues into this csv file.
 
